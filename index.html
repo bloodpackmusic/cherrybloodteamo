@@ -37,6 +37,7 @@
             border-radius: 20px;
             cursor: pointer;
             transition: background 0.3s ease, transform 0.3s ease;
+            margin: 10px;
         }
         button:hover {
             background: #fad0c4;
@@ -59,6 +60,7 @@
         <h1>💖 Para a pessoa mais especial do mundo 💖</h1>
         <p>Eu só queria lembrar o quanto você é incrível e o quanto te amo. 🥰</p>
         <button onclick="revealMessage()">Clique aqui para mais</button>
+        <button onclick="openReasons()">Algumas razões para dizer eu te amo</button>
         <p id="hiddenMessage" style="display: none; margin-top: 20px; font-size: 1.2rem;">
             Nunca esqueça: você é o motivo do meu sorriso todos os dias. ❤️
         </p>
@@ -67,6 +69,11 @@
         function revealMessage() {
             const message = document.getElementById('hiddenMessage');
             message.style.display = 'block';
+        }
+
+        function openReasons() {
+            // Substitua o link abaixo pelo que você criou para ela
+            window.open("https://www.canva.com/design/DAGYDA2s1sM/IMhhYNBm03HgIjro79t8nQ/view?utm_content=DAGYDA2s1sM&utm_campaign=designshare&utm_medium=link&utm_source=editor", "_blank");
         }
     </script>
 </body>
