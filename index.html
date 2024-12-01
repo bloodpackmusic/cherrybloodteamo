@@ -1,28 +1,73 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-BR">
 <head>
-    <title>Eu te amo!</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Surpresa para você!</title>
     <style>
         body {
-            text-align: center;
-            font-family: Arial, sans-serif;
-            background-color: #ffb6c1;
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
             color: #fff;
+            overflow: hidden;
+            text-align: center;
+        }
+        .container {
             animation: fadeIn 2s ease-in-out;
         }
         h1 {
-            font-size: 3em;
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+        p {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+        }
+        button {
+            font-size: 1.2rem;
+            padding: 10px 20px;
+            color: #ff9a9e;
+            background: #fff;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.3s ease;
+        }
+        button:hover {
+            background: #fad0c4;
+            transform: scale(1.1);
         }
         @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
     </style>
 </head>
 <body>
-    <h1>🌟 Eu te amo, Myllena Costa Portal! 🌟</h1>
-    <p>Você é o melhor presente que a vida me deu. 💕</p>
-    <p>Clique no coração para ver algo especial. ❤️</p>
-    <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank">❤️</a>
+    <div class="container">
+        <h1>💖 Para a pessoa mais especial do mundo 💖</h1>
+        <p>Eu só queria lembrar o quanto você é incrível e o quanto te amo. 🥰</p>
+        <button onclick="revealMessage()">Clique aqui para mais</button>
+        <p id="hiddenMessage" style="display: none; margin-top: 20px; font-size: 1.2rem;">
+            Nunca esqueça: você é o motivo do meu sorriso todos os dias. ❤️
+        </p>
+    </div>
+    <script>
+        function revealMessage() {
+            const message = document.getElementById('hiddenMessage');
+            message.style.display = 'block';
+        }
+    </script>
 </body>
 </html>
