@@ -99,13 +99,13 @@
         }
 
         function openVideo() {
-            const videoContainer = document.getElementById('videoContainer');
-            // Substitua o link abaixo pelo link do seu vídeo do YouTube
-            const videoUrl = "https://www.youtube.com/watch?v=dMV31MWIjLE";  // Exemplo de link do YouTube
-            const iframe = `<iframe width="100%" height="100%" src="${videoUrl}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
-            videoContainer.innerHTML = iframe;
-            videoContainer.style.display = 'block';
-        }
-    </script>
+    const videoContainer = document.getElementById('videoContainer');
+    // Link do vídeo no formato de incorporação
+    const videoUrl = "<iframe width="560" height="315" src="https://www.youtube.com/embed/Mcw1pL99WJ4?si=kthCoGDfBmr1uLzC" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>";  // Exemplo com autoplay ativado
+    const iframe = `<iframe width="100%" height="100%" src="${videoUrl}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+    videoContainer.innerHTML = iframe;
+    videoContainer.style.display = 'block';
+}
+
 </body>
 </html>
