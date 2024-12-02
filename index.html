@@ -167,6 +167,11 @@
             showSlide(currentIndex - 1);
         }
 
+        // Adicionando um intervalo para a mudança automática das imagens
+        setInterval(function() {
+            nextSlide();
+        }, 5000); // Muda a imagem a cada 5 segundos
+
         // Mostra a mensagem automaticamente após 10 segundos
         setTimeout(() => {
             const hiddenMessage = document.getElementById('hiddenMessage');
