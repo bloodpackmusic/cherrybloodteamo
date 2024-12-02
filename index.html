@@ -69,7 +69,7 @@
             }
         }
 
-        /* Animação para movimentar as imagens */
+        /* Animação para movimentar as imagens de forma aleatória */
         .moving-image {
             position: absolute;
             top: 50%;
@@ -82,22 +82,26 @@
             z-index: 1; /* Coloca as imagens atrás dos textos e botões */
         }
 
-        /* Animação para mover as imagens ao redor da tela */
+        /* Animação para mover as imagens de forma aleatória */
         @keyframes move {
             0% {
                 transform: translate(-50%, -50%) translateX(0) translateY(0);
             }
 
-            25% {
-                transform: translate(-50%, -50%) translateX(300px) translateY(-100px);
+            20% {
+                transform: translate(-50%, -50%) translateX(300px) translateY(200px);
             }
 
-            50% {
-                transform: translate(-50%, -50%) translateX(0) translateY(-200px);
+            40% {
+                transform: translate(-50%, -50%) translateX(-200px) translateY(-150px);
             }
 
-            75% {
-                transform: translate(-50%, -50%) translateX(-300px) translateY(-100px);
+            60% {
+                transform: translate(-50%, -50%) translateX(500px) translateY(-300px);
+            }
+
+            80% {
+                transform: translate(-50%, -50%) translateX(-400px) translateY(100px);
             }
 
             100% {
@@ -105,10 +109,17 @@
             }
         }
 
-        /* Botões e textos ficam acima das imagens */
-        .carousel-container {
-            z-index: 2;
-            position: relative;
+        /* Aplicando delays diferentes para que as imagens não se sobreponham */
+        .moving-image:nth-child(1) {
+            animation-delay: 0s;
+        }
+
+        .moving-image:nth-child(2) {
+            animation-delay: 3s; /* Diferente delay para começar um pouco depois */
+        }
+
+        .moving-image:nth-child(3) {
+            animation-delay: 6s; /* Outro delay para a terceira imagem */
         }
     </style>
 </head>
