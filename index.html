@@ -17,11 +17,13 @@
             color: #fff;
             overflow: hidden;
             text-align: center;
+            position: relative;
         }
         .container {
             animation: fadeIn 2s ease-in-out;
             width: 90%;
             max-width: 700px;
+            z-index: 10; /* Garante que o conteúdo fique sobre as imagens */
         }
         h1 {
             font-size: 3rem;
@@ -41,6 +43,7 @@
             cursor: pointer;
             transition: background 0.3s ease, transform 0.3s ease;
             margin: 10px;
+            z-index: 20; /* Garante que o botão fique sobre as imagens */
         }
         button:hover {
             background: #fad0c4;
@@ -61,65 +64,53 @@
             font-size: 1.2rem;
             display: none;
         }
+
+        /* Estilo das imagens aleatórias */
+        .random-images {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            opacity: 0.5;
+            animation: moveRandom 10s infinite linear;
+            z-index: 5; /* Imagens ficam atrás do conteúdo */
+        }
+
+        /* Animação para mover as imagens aleatoriamente */
+        @keyframes moveRandom {
+            0% {
+                top: 0;
+                left: 0;
+                transform: rotate(0deg);
+            }
+            25% {
+                top: 20%;
+                left: 30%;
+                transform: rotate(90deg);
+            }
+            50% {
+                top: 50%;
+                left: 60%;
+                transform: rotate(180deg);
+            }
+            75% {
+                top: 70%;
+                left: 80%;
+                transform: rotate(270deg);
+            }
+            100% {
+                top: 90%;
+                left: 10%;
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Estilos para o vídeo e os botões */
         .video-container {
             margin-top: 20px;
             max-width: 100%;
             height: 400px;
             overflow: hidden;
             border-radius: 10px;
-        }
-        .carousel {
-            position: relative;
-            max-width: 100%;
-            margin: 20px auto;
-            overflow: hidden;
-            border-radius: 10px;
-        }
-        .carousel-inner {
-            display: flex;
-            width: 300%;
-            animation: slide 9s infinite linear; /* Animação contínua e sem interrupções */
-        }
-        .carousel-inner img {
-            width: 33.33%; /* Cada imagem ocupa 1/3 do carrossel */
-            max-height: 400px;
-            object-fit: cover;
-        }
-        @keyframes slide {
-            0% {
-                transform: translateX(0);
-            }
-            33.33% {
-                transform: translateX(-100%);
-            }
-            66.66% {
-                transform: translateX(-200%);
-            }
-            100% {
-                transform: translateX(-300%); /* Move até a última imagem e começa novamente sem pausa */
-            }
-        }
-        .prev, .next {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(255, 255, 255, 0.8);
-            border: none;
-            border-radius: 50%;
-            padding: 10px;
-            cursor: pointer;
-            font-size: 1.5rem;
-            color: #ff9a9e;
-            z-index: 2;
-        }
-        .prev {
-            left: 10px;
-        }
-        .next {
-            right: 10px;
-        }
-        .prev:hover, .next:hover {
-            background: rgba(255, 255, 255, 1);
         }
     </style>
 </head>
@@ -136,13 +127,12 @@
             <!-- O vídeo do YouTube será inserido aqui -->
         </div>
     </div>
-    <div class="carousel">
-        <div class="carousel-inner">
-            <img src="https://i.imgur.com/DfTwghE.jpeg" alt="Você me faz muito feliz">
-            <img src="https://i.imgur.com/hi1Gu2Z.jpeg" alt="To contigo pro que vier">
-            <img src="https://i.imgur.com/Yue8bhz.jpeg" alt="pra sempre seu piratinha, seu amor">
-        </div>
-    </div>
+
+    <!-- Imagens que vão se mover aleatoriamente -->
+    <img src="https://i.imgur.com/DfTwghE.jpeg" class="random-images" alt="Imagem 1">
+    <img src="https://i.imgur.com/hi1Gu2Z.jpeg" class="random-images" alt="Imagem 2">
+    <img src="https://i.imgur.com/Yue8bhz.jpeg" class="random-images" alt="Imagem 3">
+
     <script>
         function openReasons() {
             window.open("https://www.canva.com/design/DAGYDA2s1sM/IMhhYNBm03HgIjro79t8nQ/view?utm_content=DAGYDA2s1sM&utm_campaign=designshare&utm_medium=link&utm_source=editor", "_blank");
