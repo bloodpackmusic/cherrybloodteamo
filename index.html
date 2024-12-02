@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Surpresa para você!</title>
+    <title>Surpresa pra você!</title>
     <style>
         body {
             margin: 0;
@@ -12,6 +12,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            flex-direction: column;
             height: 100vh;
             color: #fff;
             overflow: hidden;
@@ -66,11 +67,50 @@
             overflow: hidden;
             border-radius: 10px;
         }
+        .carousel {
+            position: relative;
+            max-width: 100%;
+            margin: 20px auto;
+            overflow: hidden;
+            border-radius: 10px;
+        }
+        .carousel-inner {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+            width: 300%;
+        }
+        .carousel-inner img {
+            width: 100%;
+            max-height: 400px;
+            object-fit: cover;
+        }
+        .prev, .next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.8);
+            border: none;
+            border-radius: 50%;
+            padding: 10px;
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: #ff9a9e;
+            z-index: 2;
+        }
+        .prev {
+            left: 10px;
+        }
+        .next {
+            right: 10px;
+        }
+        .prev:hover, .next:hover {
+            background: rgba(255, 255, 255, 1);
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>💖 Para a pessoa mais especial do mundo 💖</h1>
+        <h1>💖 Parabéns, meu amor. Feliz 4 meses pra gente 💖</h1>
         <p>Eu só queria lembrar o quanto você é incrível e o quanto te amo. 🥰</p>
         <button onclick="revealMessage()">Clique para saber mais</button>
         <button onclick="openReasons()">Algumas razões para dizer eu te amo</button>
@@ -83,7 +123,18 @@
             <!-- O vídeo do YouTube será inserido aqui -->
         </div>
     </div>
+    <div class="carousel">
+        <div class="carousel-inner">
+            <img src="URL_DA_IMAGEM_1" alt="Foto 1">
+            <img src="URL_DA_IMAGEM_2" alt="Foto 2">
+            <img src="URL_DA_IMAGEM_3" alt="Foto 3">
+        </div>
+        <button class="prev" onclick="prevSlide()">&#10094;</button>
+        <button class="next" onclick="nextSlide()">&#10095;</button>
+    </div>
     <script>
+        let currentIndex = 0;
+
         function revealMessage() {
             const message = document.getElementById('hiddenMessage');
             message.style.display = 'block';
@@ -100,12 +151,36 @@
 
         function openVideo() {
             const videoContainer = document.getElementById('videoContainer');
-            // Link do vídeo no formato de incorporação
             const videoUrl = "https://www.youtube.com/embed/oHKyZ71up30"; // Substitua pelo ID correto do vídeo
             const iframe = `<iframe width="100%" height="100%" src="${videoUrl}?autoplay=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
             videoContainer.innerHTML = iframe;
             videoContainer.style.display = 'block';
         }
+
+        function showSlide(index) {
+            const slides = document.querySelector('.carousel-inner');
+            const totalSlides = slides.children.length;
+            if (index < 0) {
+                currentIndex = totalSlides - 1;
+            } else if (index >= totalSlides) {
+                currentIndex = 0;
+            } else {
+                currentIndex = index;
+            }
+            slides.style.transform = `translateX(-${currentIndex * 100}%)`;
+        }
+
+        function nextSlide() {
+            showSlide(currentIndex + 1);
+        }
+
+        function prevSlide() {
+            showSlide(currentIndex - 1);
+        }
+
+        setTimeout(() => {
+            alert("Te amo tanto, e mesmo de longe, meu coração está com você! ❤️");
+        }, 10000); // Aparece após 10 segundos
     </script>
 </body>
 </html>
