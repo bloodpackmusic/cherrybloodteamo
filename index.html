@@ -77,7 +77,7 @@
         }
         .carousel-inner {
             display: flex;
-            transition: transform 0.5s ease-in-out;
+            transition: transform 1s ease-in-out; /* Transição mais lenta */
             width: 300%;
         }
         .carousel-inner img {
@@ -172,8 +172,8 @@
             nextSlide(); // Avança para o próximo slide
         }
 
-        // Iniciar a rotação automática a cada 5 segundos
-        setInterval(autoSlide, 5000);
+        // Iniciar a rotação automática a cada 4 segundos
+        setInterval(autoSlide, 4000); // 4 segundos por slide
 
         // Mostra a mensagem automaticamente após 10 segundos
         setTimeout(() => {
