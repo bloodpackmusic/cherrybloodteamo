@@ -24,8 +24,8 @@
             animation: fadeIn 2s ease-in-out;
             width: 90%;
             max-width: 700px;
-            position: relative; /* Garante que os textos e botões fiquem em cima das imagens */
-            z-index: 2; /* Coloca os textos e botões acima das imagens */
+            position: relative;
+            z-index: 2;
         }
 
         h1 {
@@ -49,7 +49,7 @@
             transition: background 0.3s ease, transform 0.3s ease;
             margin: 10px;
             position: relative;
-            z-index: 2; /* Coloca os botões acima das imagens */
+            z-index: 2;
         }
 
         button:hover {
@@ -69,7 +69,6 @@
             }
         }
 
-        /* Animação para movimentar as imagens de forma aleatória */
         .moving-image {
             position: absolute;
             top: 50%;
@@ -77,12 +76,11 @@
             transform: translate(-50%, -50%);
             animation: move 15s linear infinite, fadeInImage 3s ease-out forwards;
             opacity: 0;
-            width: 400px; /* Aumentei a resolução da imagem */
+            width: 400px;
             height: auto;
-            z-index: 1; /* Coloca as imagens atrás dos textos e botões */
+            z-index: 1;
         }
 
-        /* Animação para mover as imagens de forma aleatória */
         @keyframes move {
             0% {
                 transform: translate(-50%, -50%) translateX(0) translateY(0);
@@ -109,7 +107,6 @@
             }
         }
 
-        /* Fade-in gradual para as imagens */
         @keyframes fadeInImage {
             0% {
                 opacity: 0;
@@ -119,17 +116,16 @@
             }
         }
 
-        /* Aplicando delays diferentes para que as imagens não se sobreponham */
         .moving-image:nth-child(1) {
             animation-delay: 0s;
         }
 
         .moving-image:nth-child(2) {
-            animation-delay: 3s; /* Diferente delay para começar um pouco depois */
+            animation-delay: 3s;
         }
 
         .moving-image:nth-child(3) {
-            animation-delay: 6s; /* Outro delay para a terceira imagem */
+            animation-delay: 6s;
         }
     </style>
 </head>
@@ -139,15 +135,12 @@
         <p>Você é a mulher da minha vida. Eu te amo muito, Myllena. 🥰</p>
         <button onclick="openReasons()">Algumas razões para dizer eu te amo</button>
         <button onclick="openVideo()">Assiste aqui!</button>
-        <p id="hiddenMessage">
+        <p id="hiddenMessage" style="display: none;">
             Nunca esqueça: você é o motivo do meu sorriso todos os dias. Quero compartilhar a vida toda contigo ❤️
         </p>
-        <div id="videoContainer" class="video-container" style="display: none;">
-            <!-- O vídeo do YouTube será inserido aqui -->
-        </div>
+        <div id="videoContainer" style="display: none;"></div>
     </div>
 
-    <!-- Imagens em movimento, todas começam ao mesmo tempo -->
     <img src="https://i.imgur.com/Yue8bhz.jpeg" alt="Imagem 1" class="moving-image">
     <img src="https://i.imgur.com/hi1Gu2Z.jpeg" alt="Imagem 2" class="moving-image">
     <img src="https://i.imgur.com/DfTwghE.jpeg" alt="Imagem 3" class="moving-image">
@@ -159,13 +152,12 @@
 
         function openVideo() {
             const videoContainer = document.getElementById('videoContainer');
-            const videoUrl = "https://www.youtube.com/embed/oHKyZ71up30"; // Substitua pelo ID correto do vídeo
-            const iframe = <iframe width="100%" height="100%" src="${videoUrl}?autoplay=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>;
+            const videoUrl = "https://www.youtube.com/embed/gj3O3ZngFWY";
+            const iframe = `<iframe width="560" height="315" src="${videoUrl}?autoplay=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
             videoContainer.innerHTML = iframe;
             videoContainer.style.display = 'block';
         }
 
-        // Mostra a mensagem automaticamente após 10 segundos
         setTimeout(() => {
             const hiddenMessage = document.getElementById('hiddenMessage');
             hiddenMessage.style.display = 'block';
