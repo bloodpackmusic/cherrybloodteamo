@@ -9,8 +9,13 @@
             margin: 0;
             font-family: 'Arial', sans-serif;
             background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
-            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
             color: #fff;
+            overflow: hidden;
             text-align: center;
             position: relative;
         }
@@ -19,9 +24,8 @@
             animation: fadeIn 2s ease-in-out;
             width: 90%;
             max-width: 700px;
-            position: relative;
-            z-index: 2;
-            margin: 0 auto; /* Centraliza o conteúdo */
+            position: relative; /* Garante que os textos e botões fiquem em cima das imagens */
+            z-index: 2; /* Coloca os textos e botões acima das imagens */
         }
 
         h1 {
@@ -44,6 +48,8 @@
             cursor: pointer;
             transition: background 0.3s ease, transform 0.3s ease;
             margin: 10px;
+            position: relative;
+            z-index: 2; /* Coloca os botões acima das imagens */
         }
 
         button:hover {
@@ -63,35 +69,47 @@
             }
         }
 
-        /* Estilo das imagens em movimento */
+        /* Animação para movimentar as imagens de forma aleatória */
         .moving-image {
             position: absolute;
-            animation: moveRandom 20s linear infinite, fadeInImage 3s ease-out forwards;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation: move 15s linear infinite, fadeInImage 3s ease-out forwards;
             opacity: 0;
-            width: 300px; /* Ajustei para tamanhos iguais */
+            width: 400px; /* Aumentei a resolução da imagem */
             height: auto;
-            z-index: 1;
+            z-index: 1; /* Coloca as imagens atrás dos textos e botões */
         }
 
-        /* Animação de movimento independente */
-        @keyframes moveRandom {
+        /* Animação para mover as imagens de forma aleatória */
+        @keyframes move {
             0% {
-                transform: translate(calc(10% + 0px), calc(10% + 0px));
+                transform: translate(-50%, -50%) translateX(0) translateY(0);
             }
-            25% {
-                transform: translate(calc(80% - 300px), calc(20% + 50px));
+
+            20% {
+                transform: translate(-50%, -50%) translateX(300px) translateY(200px);
             }
-            50% {
-                transform: translate(calc(50% + 100px), calc(70% - 150px));
+
+            40% {
+                transform: translate(-50%, -50%) translateX(-200px) translateY(-150px);
             }
-            75% {
-                transform: translate(calc(20% - 100px), calc(90% - 100px));
+
+            60% {
+                transform: translate(-50%, -50%) translateX(500px) translateY(-300px);
             }
+
+            80% {
+                transform: translate(-50%, -50%) translateX(-400px) translateY(100px);
+            }
+
             100% {
-                transform: translate(calc(10% + 0px), calc(10% + 0px));
+                transform: translate(-50%, -50%) translateX(0) translateY(0);
             }
         }
 
+        /* Fade-in gradual para as imagens */
         @keyframes fadeInImage {
             0% {
                 opacity: 0;
@@ -101,38 +119,17 @@
             }
         }
 
-        /* Aplicando delays diferentes para garantir movimentos independentes */
+        /* Aplicando delays diferentes para que as imagens não se sobreponham */
         .moving-image:nth-child(1) {
             animation-delay: 0s;
         }
 
         .moving-image:nth-child(2) {
-            animation-delay: 2s; /* Delay diferente para início independente */
+            animation-delay: 3s; /* Diferente delay para começar um pouco depois */
         }
 
         .moving-image:nth-child(3) {
-            animation-delay: 4s; /* Outro delay para independência total */
-        }
-
-        /* Estilo das estrelas */
-        .star {
-            position: absolute;
-            width: 5px;
-            height: 5px;
-            background-color: white;
-            border-radius: 50%;
-            box-shadow: 0 0 5px white;
-            animation: moveStar 10s linear infinite;
-            z-index: 0; /* Estrelas ficam atrás de tudo */
-        }
-
-        @keyframes moveStar {
-            from {
-                transform: translate(0, 0);
-            }
-            to {
-                transform: translate(100vw, 100vh);
-            }
+            animation-delay: 6s; /* Outro delay para a terceira imagem */
         }
     </style>
 </head>
@@ -145,15 +142,15 @@
         <p id="hiddenMessage">
             Nunca esqueça: você é o motivo do meu sorriso todos os dias. Quero compartilhar a vida toda contigo ❤️
         </p>
+        <div id="videoContainer" class="video-container" style="display: none;">
+            <!-- O vídeo do YouTube será inserido aqui -->
+        </div>
     </div>
 
-    <!-- Imagens em movimento -->
+    <!-- Imagens em movimento, todas começam ao mesmo tempo -->
     <img src="https://i.imgur.com/Yue8bhz.jpeg" alt="Imagem 1" class="moving-image">
     <img src="https://i.imgur.com/hi1Gu2Z.jpeg" alt="Imagem 2" class="moving-image">
     <img src="https://i.imgur.com/DfTwghE.jpeg" alt="Imagem 3" class="moving-image">
-
-    <!-- Contêiner para estrelas -->
-    <div id="starContainer"></div>
 
     <script>
         function openReasons() {
@@ -162,39 +159,17 @@
 
         function openVideo() {
             const videoContainer = document.getElementById('videoContainer');
-            const videoUrl = "https://www.youtube.com/embed/oHKyZ71up30";
-            const iframe = `<iframe width="100%" height="100%" src="${videoUrl}?autoplay=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+            const videoUrl = "https://www.youtube.com/embed/oHKyZ71up30"; // Substitua pelo ID correto do vídeo
+            const iframe = <iframe width="100%" height="100%" src="${videoUrl}?autoplay=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>;
             videoContainer.innerHTML = iframe;
             videoContainer.style.display = 'block';
         }
 
-        // Função para criar estrelas
-        function createStar() {
-            const star = document.createElement('div');
-            star.classList.add('star');
-
-            // Posição inicial aleatória
-            star.style.top = Math.random() * 100 + 'vh';
-            star.style.left = Math.random() * 100 + 'vw';
-
-            // Tamanho aleatório
-            const size = Math.random() * 5 + 2; // Entre 2px e 7px
-            star.style.width = size + 'px';
-            star.style.height = size + 'px';
-
-            // Duração aleatória para a animação
-            star.style.animationDuration = Math.random() * 5 + 5 + 's';
-
-            document.getElementById('starContainer').appendChild(star);
-
-            // Remove a estrela após a animação
-            setTimeout(() => {
-                star.remove();
-            }, 10000);
-        }
-
-        // Criar várias estrelas ao carregar a página
-        setInterval(createStar, 500);
+        // Mostra a mensagem automaticamente após 10 segundos
+        setTimeout(() => {
+            const hiddenMessage = document.getElementById('hiddenMessage');
+            hiddenMessage.style.display = 'block';
+        }, 10000);
     </script>
 </body>
 </html>
