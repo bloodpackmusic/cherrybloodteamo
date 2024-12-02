@@ -24,6 +24,8 @@
             animation: fadeIn 2s ease-in-out;
             width: 90%;
             max-width: 700px;
+            position: relative; /* Garante que os textos e botões fiquem em cima das imagens */
+            z-index: 2; /* Coloca os textos e botões acima das imagens */
         }
 
         h1 {
@@ -47,7 +49,7 @@
             transition: background 0.3s ease, transform 0.3s ease;
             margin: 10px;
             position: relative;
-            z-index: 2;
+            z-index: 2; /* Coloca os botões acima das imagens */
         }
 
         button:hover {
@@ -77,6 +79,7 @@
             opacity: 0.5;
             width: 400px; /* Aumentei a resolução da imagem */
             height: auto;
+            z-index: 1; /* Coloca as imagens atrás dos textos e botões */
         }
 
         /* Animação para mover as imagens ao redor da tela */
