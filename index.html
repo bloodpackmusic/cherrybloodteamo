@@ -75,8 +75,8 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            animation: move 15s linear infinite;
-            opacity: 0.5;
+            animation: move 15s linear infinite, fadeInImage 3s ease-out forwards;
+            opacity: 0;
             width: 400px; /* Aumentei a resolução da imagem */
             height: auto;
             z-index: 1; /* Coloca as imagens atrás dos textos e botões */
@@ -106,6 +106,16 @@
 
             100% {
                 transform: translate(-50%, -50%) translateX(0) translateY(0);
+            }
+        }
+
+        /* Fade-in gradual para as imagens */
+        @keyframes fadeInImage {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
             }
         }
 
