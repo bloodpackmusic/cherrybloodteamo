@@ -66,34 +66,29 @@
         /* Estilo das imagens em movimento */
         .moving-image {
             position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            animation: move 15s linear infinite, fadeInImage 3s ease-out forwards;
+            animation: moveRandom 20s linear infinite, fadeInImage 3s ease-out forwards;
             opacity: 0;
-            width: 400px;
+            width: 300px; /* Ajustei para tamanhos iguais */
             height: auto;
             z-index: 1;
         }
 
-        @keyframes move {
+        /* Animação de movimento independente */
+        @keyframes moveRandom {
             0% {
-                transform: translate(-50%, -50%) translateX(0) translateY(0);
+                transform: translate(calc(10% + 0px), calc(10% + 0px));
             }
-            20% {
-                transform: translate(-50%, -50%) translateX(300px) translateY(200px);
+            25% {
+                transform: translate(calc(80% - 300px), calc(20% + 50px));
             }
-            40% {
-                transform: translate(-50%, -50%) translateX(-200px) translateY(-150px);
+            50% {
+                transform: translate(calc(50% + 100px), calc(70% - 150px));
             }
-            60% {
-                transform: translate(-50%, -50%) translateX(500px) translateY(-300px);
-            }
-            80% {
-                transform: translate(-50%, -50%) translateX(-400px) translateY(100px);
+            75% {
+                transform: translate(calc(20% - 100px), calc(90% - 100px));
             }
             100% {
-                transform: translate(-50%, -50%) translateX(0) translateY(0);
+                transform: translate(calc(10% + 0px), calc(10% + 0px));
             }
         }
 
@@ -104,6 +99,19 @@
             100% {
                 opacity: 1;
             }
+        }
+
+        /* Aplicando delays diferentes para garantir movimentos independentes */
+        .moving-image:nth-child(1) {
+            animation-delay: 0s;
+        }
+
+        .moving-image:nth-child(2) {
+            animation-delay: 2s; /* Delay diferente para início independente */
+        }
+
+        .moving-image:nth-child(3) {
+            animation-delay: 4s; /* Outro delay para independência total */
         }
 
         /* Estilo das estrelas */
