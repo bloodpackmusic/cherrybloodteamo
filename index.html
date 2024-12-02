@@ -59,6 +59,7 @@
         #hiddenMessage {
             margin-top: 20px;
             font-size: 1.2rem;
+            display: none;
         }
         .video-container {
             margin-top: 20px;
@@ -112,11 +113,10 @@
     <div class="container">
         <h1>💖 Parabéns, meu amor. Feliz 4 meses pra gente 💖</h1>
         <p>Eu só queria lembrar o quanto você é incrível e o quanto te amo. 🥰</p>
-        <button onclick="revealMessage()">Clique para saber mais</button>
         <button onclick="openReasons()">Algumas razões para dizer eu te amo</button>
         <button onclick="openAlbum()">Ver meu álbum de fotos</button>
         <button onclick="openVideo()">Assistir ao vídeo especial</button>
-        <p id="hiddenMessage" style="display: none;">
+        <p id="hiddenMessage">
             Nunca esqueça: você é o motivo do meu sorriso todos os dias. ❤️
         </p>
         <div id="videoContainer" class="video-container" style="display: none;">
@@ -134,11 +134,6 @@
     </div>
     <script>
         let currentIndex = 0;
-
-        function revealMessage() {
-            const message = document.getElementById('hiddenMessage');
-            message.style.display = 'block';
-        }
 
         function openReasons() {
             window.open("https://www.canva.com/design/DAGYDA2s1sM/IMhhYNBm03HgIjro79t8nQ/view?utm_content=DAGYDA2s1sM&utm_campaign=designshare&utm_medium=link&utm_source=editor", "_blank");
@@ -178,9 +173,11 @@
             showSlide(currentIndex - 1);
         }
 
+        // Mostra a mensagem automaticamente após 5 segundos
         setTimeout(() => {
-            alert("Te amo tanto, e mesmo de longe, meu coração está com você! ❤️");
-        }, 10000); // Aparece após 10 segundos
+            const hiddenMessage = document.getElementById('hiddenMessage');
+            hiddenMessage.style.display = 'block';
+        }, 5000);
     </script>
 </body>
 </html>
